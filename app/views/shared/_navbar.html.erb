@@ -25,7 +25,7 @@
         </li>
         <li>
           <i class='bx bx-user' ></i>
-          Profile
+          <%= link_to "Profile", user_path(current_user), style: 'text-decoration:none;color:#fff' %>
         </li>
         <li>
           <i class='bx bx-list-ul' ></i>
@@ -38,10 +38,16 @@
       </ul>
 
       <label for="ip-logout" style="display: flex;align-items: center;top: 130px;position: relative;padding: 10px;cursor:pointer;border-radius:14px">
-        <div style="display: flex;align-items: center;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPRUUtju-41XXkii6MT8nbFok5T0Ce06NtDQ&usqp=CAU" width='40px' style='border-radius:50%'/></div>
+        <div style="display: flex;align-items: center;">
+          <% if current_user.image.present? %>
+            <%= image_tag url_for(current_user.image), style: 'width: 40px;height:40px;border-radius:50%'%>
+          <% else %>
+            <img src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg" width='40px' style='border-radius:50%'/>
+          <% end %>
+        </div>
         <div style="margin-left: 10px;">
-          <p style="margin: 0">Trungg</p>
-          <p style="margin: 0">@Trummm</p>
+          <p style="margin: 0"><%= current_user.name %></p>
+          <p style="margin: 0"><%= current_user.nickname %></p>
         </div>
       </label>
 

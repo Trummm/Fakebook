@@ -1,0 +1,43 @@
+<div class="post">
+  <div class="post_item">
+    <div class="post_top">
+      <div style="display:flex;align-items:center">
+        <div class="post_top-img">
+          <%= image_tag(post.user.image) %>
+          <%# <img src="https://www.denofgeek.com/wp-content/uploads/2018/08/best-action-movies-black-panther.jpg?fit=1200%2C800"/> %>
+        </div>
+        <div class="post_top-name">
+          <h3 style="display:flex;align-items:center">
+            <%= post.user.name %>
+            <%= image_tag('correct.png', width: '18px', style: 'margin-left:6px') %>
+          </h3>
+        </div>
+        <div class="post_top-nickname">
+          <h4><%= post.user.nickname %></h4>
+        </div>
+      </div>
+
+        <div class="more">
+          <i class='bx bx-dots-horizontal-rounded'></i>
+        </div>
+    </div> 
+
+    <div class="title-time" style="color: #71767B;margin-top: 10px;">
+      <%= time_ago_in_words(post.created_at) %> ago.
+    </div>
+
+    <div class="post_title">
+      <h2><%= post.content %></h2>
+    </div>
+
+    <div class="post_image">
+      <%= image_tag(post.image) %>
+    </div>
+
+    <div class="footer">
+      <div class="cmt"><i class='bx bx-chat' ></i></div>
+      <div class="share"><i class='bx bx-share' ></i></div>
+      <div class="cmt"><i class='bx bx-heart' ></i></div>
+    </div>
+  </div>    
+</div>

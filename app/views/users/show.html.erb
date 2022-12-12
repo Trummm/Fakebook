@@ -1,0 +1,73 @@
+<div class="main">
+  <div class="w1400">
+    <%= render 'shared/navbar' %>
+
+    <div class="right">
+      <div class="right_center" style="background-image: url(<%= url_for(@user.background) if @user.background.present? %>);background-size:cover;height:245px;position:relative">
+        <div class="profile" style="position:absolute;display: flex;bottom: -54%;align-items: center;justify-content: space-between;width: 90%;">
+          <div class="profile_left" style="display: flex;flex-direction: column;align-items: flex-start;flex: 6">
+            <div class="profile_left-img" style="background-color: black;width: 190px;height: 190px;display: flex;align-items: center;justify-content: center;border-radius: 50%;">
+              <% if @user.image.present? %>
+                <%= image_tag url_for(@user.image), style: 'width: 180px;height:180px;border-radius: 50%;' %>
+              <% else %>
+                <img src="https://plusvalleyadventure.com/wp-content/uploads/2020/11/default-user-icon-8.jpg" style="width: 180px;height:180px;border-radius: 50%;"/>
+              <% end %>
+            </div>
+            <div class="profile_left-name" style="margin: 10px 0;font-weight: 900;">
+              <h3 style="margin: 0;font-weight: 900;font-size:2rem"><%= @user.name %></h3>
+            </div>
+            <div class="profile_left-nickname">
+              <h5 style="margin: 0;color: rgb(47, 51, 54);font-size:1.2rem"><%= @user.nickname %></h5>
+            </div>
+          </div>
+          <div class="profile_right" style="flex: 1">
+            <label for="edit_profile" style="color: rgb(29, 155, 240);background: none;border: 1px solid rgb(29, 155, 240);/* padding: 10px 20px; */border-radius: 24px;cursor: pointer;display: flex;justify-content: center;padding: 10px;">Edit Profile</label>
+
+            <input type="checkbox" id="edit_profile" hidden class="ed_profile"/>
+
+            <label for="edit_profile" class="modal" style="position:fixed;top: 0;right: 0;bottom: 0;left: 0">
+              <div class="mark" style="position:absolute;width:100%;height:100%;background-color: rgba(91, 112, 131, 0.4);display:flex;align-items:center;justify-content:center">
+                <%= form_with model: @user do |f| %>
+                <%# <form style="width: 800px;height: 600px;background-color: black;border-radius: 20px;"> %>
+                <div class="form_input">
+                  <div class="bg" style="background-image: url(<%= url_for(current_user.background) if @user.background.present? %>)">
+                    <label style="cursor: pointer;font-size: 2rem;color: black;" for="background"><i class='bx bx-image-add' ></i></label>
+
+                    <label for="img-inp" style="position:absolute;left: 35px;bottom: -82px;cursor: pointer;">
+                      <div style="background-image:url(<%= url_for(current_user.image) if @user.background.present? %>);width: 200px;height: 200px;background-size: cover;background-position:center;border-radius: 50%;display: flex;justify-content: center;align-items: center;" style="width: 180px;height:180px;border-radius: 50%;font-size: 1.4rem;color: black;">
+                        <i class='bx bx-image-add' style="color:black;font-size:1.4rem"></i>
+                      </div>
+                    </label>
+                  </div>
+                  <%= f.file_field :background, id: 'background', hidden: true %>
+                  <%= f.file_field :image, class: "custom-file-input", id: "img-inp", hidden: true %>
+                  <%= f.label :name %>
+                  <%= f.text_field :name %>
+                  <%= f.label :email %>
+                  <%= f.text_field :email %>
+                  <%= f.label :phone %>
+                  <%= f.text_field :phone %>
+                  <%= f.label :nickname %>
+                  <%= f.text_field :nickname %>
+                  <%= f.label :introduce %>
+                  <%= f.text_field :introduce %>
+                  <%= f.label :password %>
+                  <%= f.password_field :password %>
+                </div>
+                <div class="upt-btn" style="display: flex;justify-content: center;margin-top: 20px;">
+                  <%= f.submit 'Update', class: 'btn btn-primary' %>
+                </div>
+                <%# </form> %>
+                <% end %>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="introduce" style="top: 185%;position: relative;z-index: -999">
+          <p><%= @user.introduce %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
