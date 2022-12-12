@@ -1,0 +1,53 @@
+<div class="left">
+      <div class="logo">
+        <%= image_tag('logo.png', width: '50px') %>
+      </div>
+      <ul class="left_list">
+        <li>
+          <i class='bx bx-home-circle'></i>
+          <%= link_to "Home", dashboard_path, style: 'text-decoration:none;color:#fff' %>
+        </li>
+        <li>
+          <i class='bx bx-toggle-right'></i>
+          Explore
+        </li>
+        <li>
+          <i class='bx bx-bell' ></i>
+          Notifications
+        </li>
+        <li>
+          <i class='bx bx-message-rounded' ></i>
+          Message
+        </li>
+        <li>
+          <i class='bx bx-bookmarks' ></i>
+          Bookmarks
+        </li>
+        <li>
+          <i class='bx bx-user' ></i>
+          Profile
+        </li>
+        <li>
+          <i class='bx bx-list-ul' ></i>
+          Lists
+        </li>
+        <li>
+          <i class='bx bx-dots-horizontal-rounded' ></i>
+          More
+        </li>
+      </ul>
+
+      <label for="ip-logout" style="display: flex;align-items: center;top: 130px;position: relative;padding: 10px;cursor:pointer;border-radius:14px">
+        <div style="display: flex;align-items: center;"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPRUUtju-41XXkii6MT8nbFok5T0Ce06NtDQ&usqp=CAU" width='40px' style='border-radius:50%'/></div>
+        <div style="margin-left: 10px;">
+          <p style="margin: 0">Trungg</p>
+          <p style="margin: 0">@Trummm</p>
+        </div>
+      </label>
+
+      <input type="checkbox" hidden id="ip-logout" class="ip"/>
+
+      <div class="h4_logout" style="position: absolute;border: 1px solid #ccc;border-radius: 14px;left: 54px;display:none">
+        <%= link_to "Logout", logout_path %>
+      </div>
+    </div>

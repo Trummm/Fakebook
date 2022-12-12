@@ -14,5 +14,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    log_out if logged_in?
+    flash.now[:danger] = "Logout Success!!"
+    redirect_to login_path
   end
 end

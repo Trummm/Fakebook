@@ -1,0 +1,181 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.main{
+  width: 100%;
+  .w1400{
+    width: 1400px;
+    margin: 0 auto;
+    color: white;
+    display: flex;
+    .left{
+      width: 20%;
+      position: fixed;
+      .left_list{
+        list-style: none;
+        padding-left: 10px;
+        font-size: 1.4rem;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        > li {
+          margin: 40px 0;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          i {
+            margin-right: 12px;
+          }
+        }
+        .white{
+          color: white;
+        }
+      }
+      label:hover{
+        background-color: rgba(231, 233, 234, 0.1);
+      }
+
+      .h4_logout{
+        padding: 20px;
+        a{
+          text-decoration: none;
+          color: #fff;
+        }
+      }
+
+      .ip:checked ~ .h4_logout{
+        display: block !important;
+      }
+    }
+    .right{
+      width: 80%;
+      height: 100px;
+      position: relative;
+      right: -280px;
+      .right_form{
+        display: flex;
+        flex-direction: column;
+        .inp_text{
+          margin-left: 20px;
+          width: 100%;
+          height: 40px;
+          outline: none;
+          border: none;
+          background: none;
+          color: white;
+          font-size: 1.4rem;
+          border-bottom: 1px solid rgb(47, 51, 54);
+        }
+        .label{
+          > i{
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: rgb(29, 155, 240);
+          }
+        }
+        .button{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 30px 0 0 0;
+          .btn{
+            width: 200px;
+            height: 50px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Roboto', sans-serif;
+            background-color: rgb(29, 155, 240);
+            color: #fff;
+            font-weight: 700;
+          }
+          .label{
+            >label{
+              margin: 0 10px;
+            }
+          }
+        }
+        .right_form-img{
+          .img_item{
+            img{
+              width: 50px;
+              height: 50px;
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+      .right_center{
+        width: 800px;
+        margin: 0 auto;
+        border: 1px solid rgb(47, 51, 54);
+        padding: 40px;
+        border-radius: 10px;
+      }
+
+      .post{
+        width: 100%;
+        .post_item{
+          margin: 0 auto;
+          padding: 40px;
+          width: 800px;
+          border: 1px solid rgb(47, 51, 54);
+          margin-top: 20px;
+          border-radius: 10px;
+          .post_top{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .more{
+              i{
+                font-size: 1.4rem;
+                cursor: pointer;
+              }
+            }
+          }
+          .post_top-img{
+            img{
+              width: 60px;
+              height: 60px;
+              background-size: cover;
+              border-radius: 50%;
+            }
+          }
+          .post_top-name{
+            margin: 0 12px;
+          }
+          .post_top-nickname{
+            font-weight: 100;
+            color: #cccc;
+          }
+
+          .post_title{
+            h3{
+              margin: 0;
+              img{
+                margin-left: 10px;
+              }
+            }
+          }
+          .post_image{
+            img{
+              width: 100%;
+            }
+          }
+
+          .footer{
+            display: flex;
+            margin-top: 20px;
+            .share{
+              margin: 0 20px;
+            }
+            i{
+              font-size: 1.6rem;
+              color: #ccc;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}

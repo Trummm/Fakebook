@@ -1,0 +1,18 @@
+<%= form_with model: @post, class: 'right_form' do |f| %>
+  <div class="right_form-img" style="display: flex;align-items: center;background-size: cover;">
+    <div class="img_item">
+      <img src="https://www.cgv.vn/media/catalog/product/cache/1/image/1800x/71252117777b696995f01934522c402d/a/v/avatar-1615695904-2089-1615696022.jpg" />
+    </div>
+      <%= f.text_field :content, class: 'inp_text', placeholder: 'What do you think ?' %>
+  </div>
+  <div class="button">
+    <div class="label">
+      <label for="inp_img" class="label"><i class='bx bxs-image-add' ></i></label>
+      <label for="" class="label"><i class='bx bxs-file-gif'></i></label>
+      <label for="" class="label"><i class='bx bx-list-ul'></i></label>
+      <label for="" class="label"><i class='bx bxs-face' ></i></label>
+      <%= f.file_field :image, id: 'inp_img', hidden: true %>
+    </div>
+      <button class="btn">POST</button>
+  </div>
+<% end %>
