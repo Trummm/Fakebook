@@ -1,3 +1,63 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.main{
+  .modal{
+    display: none;
+    form{
+      width: 800px;
+      background-color: black;
+      border-radius: 20px;
+      animation: showForm linear .2s;
+      padding: 40px;
+      .form_input{
+        display: flex;
+        flex-direction: column;
+        input {
+          height: 40px;
+          margin: 10px 0;
+          border-radius: 10px;
+          border: 1px solid #fff;
+          outline: none;
+          padding: 0 10px;
+          color: black;
+        }
+        .bg{
+          position: relative;
+          height: 200px;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-position: center;
+          border-radius: 20px;
+          display: flex;
+          justify-content: center;
+          margin-bottom: 70px;
+          align-items: center;
+        }
+      }
+    }
+    .upt-btn{
+      input{
+        background-color: #1d9bf0;
+        border: 1px solid #1D9BF1;
+        color: #fff;
+        padding: 20px 80px;
+        cursor: pointer;
+        border-radius: 20px;
+        font-weight: 900;
+      }
+    }
+  }
+  .ed_profile:checked ~ .modal{
+    display: block;
+  }
+}
+
+@keyframes showForm {
+  from{
+    opacity: 0;
+    transform: scale(2);
+  }
+
+  to{
+    opacity: 1;
+    transform: scale(1);
+  }
+}

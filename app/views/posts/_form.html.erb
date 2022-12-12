@@ -1,7 +1,11 @@
 <%= form_with model: @post, class: 'right_form' do |f| %>
   <div class="right_form-img" style="display: flex;align-items: center;background-size: cover;">
     <div class="img_item">
-      <img src="https://www.cgv.vn/media/catalog/product/cache/1/image/1800x/71252117777b696995f01934522c402d/a/v/avatar-1615695904-2089-1615696022.jpg" />
+      <% if current_user.image.present? %>
+        <%= image_tag url_for(current_user.image)%>
+      <% else %>
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg" />
+      <% end %>
     </div>
       <%= f.text_field :content, class: 'inp_text', placeholder: 'What do you think ?' %>
   </div>
