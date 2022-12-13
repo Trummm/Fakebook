@@ -1,10 +1,24 @@
+<style>
+  .more{
+    position: relative;
+  }
+  .more_list-<%= post.id %>{
+    z-index: 999999;
+    position: absolute;
+    display: none;
+  }
+  .m_ip-<%= post.id %>:checked ~ .more_list-<%= post.id %>{
+    display: block;
+    z-index: 999999;
+    animation: more ease-in .1s;
+  }
+</style>
 <div class="post">
   <div class="post_item">
     <div class="post_top">
       <div style="display:flex;align-items:center">
         <div class="post_top-img">
           <%= image_tag(post.user.image) %>
-          <%# <img src="https://www.denofgeek.com/wp-content/uploads/2018/08/best-action-movies-black-panther.jpg?fit=1200%2C800"/> %>
         </div>
         <div class="post_top-name">
           <h3 style="display:flex;align-items:center">
@@ -17,9 +31,22 @@
         </div>
       </div>
 
-        <div class="more">
+        <label for="more_ip-<%= post.id %>" class="more">
           <i class='bx bx-dots-horizontal-rounded'></i>
-        </div>
+          <input type="checkbox" id="more_ip-<%= post.id %>" class="m_ip-<%= post.id %>" hidden />
+
+          <ul class="more_list-<%= post.id %>" style="right: 0;width: 100px;margin: 0;padding: 20px;list-style: none;box-shadow: rgb(38 57 77) 0px 20px 30px -10px;border-radius: 20px">
+            <li style="display: flex;align-items: center;cursor: pointer;margin: 10px 0">
+              <i class='bx bx-message-square-x' style="margin-right: 10px"></i>
+              <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, style: 'text-decoration:none;color:#fff' %>
+            </li>
+            <li style="display: flex;align-items: center;cursor: pointer;margin: 10px 0">
+              <i class='bx bx-message-alt-edit' style="margin-right: 10px"></i>
+              Edit
+            </li>
+          </ul>
+        </label>
+
     </div> 
 
     <div class="title-time" style="color: #71767B;margin-top: 10px;">

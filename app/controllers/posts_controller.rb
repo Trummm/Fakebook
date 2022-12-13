@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :find_post, only: %i[destroy]
   def index
     @posts = Post.all.order(created_at: :desc)
     @post = Post.new
@@ -21,9 +22,16 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    if @post.destroy
+      flash.now[:success] = "Delete Success!"
+      redirect_to request.referrer
+    end
   end
 
   private
+  def find_post
+    @post = Post.find(params[:id])
+  end
   def post_params
     params.require(:post).permit(:user_id, :content, :image)
   end
