@@ -1,0 +1,20 @@
+<div style="display: flex;margin: 20px 0;color:#fff">
+            <div style="display: flex;margin-right: 10px;min-width:170px">
+              <div class="middle-cmt_img" style="margin-right: 10px;">
+                <%= image_tag(comment.user.image, style: "width: 40px;height: 40px;border-radius: 50%;" ) %>
+              </div>
+              <div class="middle-cmt_info">
+                <div class="middle-cmt_info_name" style="font-weight: 900;">
+                  <%= comment.user.name %>
+                </div>
+                <div class="middle-cmt_info_time" style="color: #71767B;">
+                  <%= time_ago_in_words(comment.created_at) %>
+                </div>
+              </div>
+            </div>
+            <div class="middle-cmt_comment" style="margin-top: 2px;">
+              <div style="font-family: 'Roboto', sans-serif;">
+                <%= comment.content %>
+              </div>
+            </div>
+          </div>

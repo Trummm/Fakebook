@@ -173,11 +173,58 @@
               color: #ccc;
               cursor: pointer;
             }
+            .cmt{
+              position: relative;
+              .circle_count{
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background-color: red;
+                padding: 2px;
+                font-weight: 900;
+                top: -12px;
+                left: 14px;
+                text-align: center;
+              }
+            }
           }
         }
       }
     }
   }
+}
+
+.modal_cmt{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  .mark_cmt{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-color: rgba(91, 112, 131, 0.4);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    .form_cmt{
+      width: 800px;
+      height: 800px;
+      background-color: #242526;
+      display: flex;
+      flex-direction: column;
+      .middle-cmt{
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none
+      }
+    }
+  }
+}
+.form-cmt{
+  display: flex;
+  align-items: center
 }
 
 @keyframes more {

@@ -1,0 +1,53 @@
+<div class="modal_cmt">
+  <div class="mark_cmt" style="display:flex">
+    <div class="img-cmt" style="flex:3;background-color:black;height:100%;position:relative">
+      <div style="height: 100%;display: flex;justify-content: center;align-items: center;">
+        <%= image_tag(@post.image, style: "width: 50%" ) %>
+      </div>
+      <div class="form_icon" style="position:absolute;top:20px">
+        <%= link_to dashboard_path, style: 'text-decoration:none;color:#fff' do %>
+          <label for="ip-cmt" class='bx bx-x' style="font-size:3rem;cursor:pointer;color: #fff;"></label>
+        <% end %>
+      </div>
+    </div>
+    <div class="form_cmt" style="flex:1;height:100%;background-color:#242526;border-radius:none">
+      <div class="form_icon" style="display:flex;flex-direction:column;flex:1;padding: 20px 20px">
+        <div style="display:flex;align-items:center">
+          <div style="width: 50px;height:50px;display: flex;align-items: center;"><%= image_tag(@post.user.image, style: "width: 50px;height:50px;border-radius:50%" ) %></div>
+          <div style="display:flex;flex-direction:column;margin-left:10px">
+            <div style="color: #fff;font-weight: 900;font-size: 1.4rem;"><%= @post.user.name %></div>
+            <div class="title-time" style="color: #71767B">
+              <%= time_ago_in_words(@post.created_at) %> ago.
+            </div>
+          </div>
+        </div>
+
+        <div style="color: #fff;/* margin-top: 10px; */padding: 40px 0;border-bottom:1px solid #3E4042;font-size: 1.4rem;font-family: 'Roboto', sans-serif;">
+          <%= @post.content %>
+        </div>
+      </div>
+
+      <div id="product" class="middle-cmt"
+        style="flex: 24;padding: 0 20px;overflow-y: scroll;scrollbar-width: none;-ms-overflow-style: none;">
+        <% @comments.each do |comment| %>
+          <%= render 'comments/comment', comment: comment %>
+        <% end %>
+      </div>
+
+      <div class="footer-cmt" style="padding: 20px;flex: 1">
+        <%= form_with model: @comment, class: 'form-cmt' , style: 'display:flex;align-items:center', remote: true do
+          |f| %>
+          <div style="flex: 1;">
+            <%= image_tag(@post.user.image, style: "width: 60px;height: 60px;border-radius: 50%;" ) %>
+          </div>
+          <div style="flex: 10;margin-left:10px">
+            <%= f.hidden_field :post_id, value: @post.id %>
+              <%= f.text_field :content, placeholder: 'What do you think ?' ,
+                style: 'padding: 0 4px;width: 100%;outline: none;color: #fff;background: none;font-size: 1.2rem;flex: 10;border: none;'
+                %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
