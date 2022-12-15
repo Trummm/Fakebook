@@ -12,25 +12,57 @@
     z-index: 999999;
     animation: more ease-in .1s;
   }
+  .ipc-<%= post.id %>:checked ~ .modal_cmt-<%= post.id %>{
+    display: block;
+  }
+  .edit_block-<%= post.id %>{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(91, 112, 131, 0.4);
+    display: none;
+  }
+  .edit_block_item-<%= post.id %>{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .edit_block_item-<%= post.id %> form{
+    width: 800px;
+    background-color: black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+  }
+  .ed-<%= post.id %>:checked ~ .edit_block-<%= post.id %>{
+    display: block;
+    animation: showForm ease-in .1s
+  }
 </style>
 <div class="post">
   <div class="post_item">
     <div class="post_top">
-      <div style="display:flex;align-items:center">
-        <div class="post_top-img">
-          <%= image_tag(post.user.image) %>
+        <div style="display:flex;align-items:center">
+          <div class="post_top-img">
+            <%= image_tag(post.user.image) %>
+          </div>
+          <div class="post_top-name">
+            <h3 style="display:flex;align-items:center">
+            <%= link_to user_path(post.user), style: 'color:#fff;text-decoration:none' do %>
+              <%= post.user.name %>
+            <% end %>
+              <%= image_tag('correct.png', width: '18px', style: 'margin-left:6px') %>
+            </h3>
+          </div>
+          <div class="post_top-nickname">
+            <h4><%= post.user.nickname %></h4>
+          </div>
         </div>
-        <div class="post_top-name">
-          <h3 style="display:flex;align-items:center">
-            <%= post.user.name %>
-            <%= image_tag('correct.png', width: '18px', style: 'margin-left:6px') %>
-          </h3>
-        </div>
-        <div class="post_top-nickname">
-          <h4><%= post.user.nickname %></h4>
-        </div>
-      </div>
-
+        <% if current_user?(post.user) || current_user.isAdmin? %>
         <label for="more_ip-<%= post.id %>" class="more">
           <i class='bx bx-dots-horizontal-rounded'></i>
           <input type="checkbox" id="more_ip-<%= post.id %>" class="m_ip-<%= post.id %>" hidden />
@@ -40,12 +72,39 @@
               <i class='bx bx-message-square-x' style="margin-right: 10px"></i>
               <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' }, style: 'text-decoration:none;color:#fff' %>
             </li>
+
+          <% if current_user?(post.user) %>
             <li style="display: flex;align-items: center;cursor: pointer;margin: 10px 0">
               <i class='bx bx-message-alt-edit' style="margin-right: 10px"></i>
-              Edit
+                <label for="edit-<%= post.id %>" style="cursor:pointer">
+                  Edit
+                </label>
+
+              <input type="checkbox" id="edit-<%= post.id %>" class="ed-<%= post.id %>" hidden/>
+
+              <div class="edit_block-<%= post.id %>">
+                <div class="edit_block_item-<%= post.id %>">
+                  <%= form_with model: post, local: true do |f| %>
+                    <div style="display: flex;justify-content: center;align-items:center;width: 100%;margin-right:10px">
+                      <%= image_tag(post.user.image, style: 'width:40px;height:40px;border-radius:50%') %>
+                      <%= f.text_field :content, style:"width: 80%;height: 50px;padding: 0 10px;background: none;border: none;outline: none;color: #ccc;font-size: 1.6rem;" %>
+                    </div>
+                    <div style="display: flex;justify-content: center;margin-top: 20px;">
+                      <%= image_tag(post.image, style: 'width:70%') %>
+                    </div>
+                    <label for="img_more" style="position: absolute;top: 48%;left: 48%;"><i class='bx bx-image-add' style="font-size: 4rem;cursor: pointer;"></i></label>
+                    <%= f.file_field :image, hidden: true, style: "width: 80%;border-radius: 10px;", id: 'img_more'%>
+                    <div style="width: 100%;display:flex;justify-content:center">
+                      <%= f.submit "Update", style:"width:120px;height:70px;border:1px solid rgb(29, 155, 240);background:none;color:rgb(29, 155, 240);margin-top:20px;border-radius:20px;cursor:pointer" %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
             </li>
+          <% end %>
           </ul>
         </label>
+        <% end %>
 
     </div> 
 
@@ -62,7 +121,14 @@
     </div>
 
     <div class="footer">
-      <div class="cmt"><i class='bx bx-chat' ></i></div>
+      <label class="cmt">
+          <% if post.comments.present? %>
+            <div class="circle_count"><%= post.comments.count %></div>
+          <% end %>
+          <%= link_to post_path(post), style: 'text-decoration:none;color:#fff' do %>
+            <i class='bx bx-chat' ></i>
+          <% end %>
+      </label>
       <div class="share"><i class='bx bx-share' ></i></div>
       <div class="cmt"><i class='bx bx-heart' ></i></div>
     </div>

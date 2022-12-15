@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :find_post, only: %i[destroy]
+  before_action :find_post, only: %i[destroy show edit update]
   def index
     @posts = Post.all.order(created_at: :desc)
     @post = Post.new
@@ -10,21 +10,26 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.new(post_params)
-    if @post.save
-      flash[:success] = 'Create Success!'
-      redirect_to request.referrer
-    else
-      render :new
-    end 
+    @post.save
   end
 
-  def update
+  def edit; end
+
+  def show
+    @comment = Comment.new
+    @comments = @post.comments.order(created_at: :desc)
   end
 
   def destroy
     if @post.destroy
       flash.now[:success] = "Delete Success!"
       redirect_to request.referrer
+    end
+  end
+
+  def update
+    if @post.update(post_params)
+      redirect_to @post
     end
   end
 
