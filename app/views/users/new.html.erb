@@ -1,11 +1,13 @@
-<%= form_with scope: :session, url: login_path, class: 'form_login' do |f| %>
-  <%= render 'above' %>
+<%= form_with model: @user, class: 'form_login' do |f| %>
+  <%= render 'sessions/above' %>
   
   <% flash.each do |message_type, message| %>
     <div class="alert alert-<%= message_type %>"><%= message %></div>
   <% end %>
 
   <div class="inputGroup inputGroup1">
+    <%= f.label :name, id: 'loginEmailLabel', for: 'loginEmail' %>
+    <%= f.text_field :name, id: 'loginEmail'%>
     <%= f.label :email, id: 'loginEmailLabel', for: 'loginEmail' %>
     <%= f.text_field :email, id: 'loginEmail'%>
     <p class="helper helper1">email@gmail.com</p>
@@ -13,16 +15,18 @@
   <div class="inputGroup inputGroup2">
     <%= f.label :password, id: 'loginPasswordLabel', for: 'loginPassword' %>
     <%= f.password_field :password, id: 'loginPassword'%>
+    <%= f.label :password_confirmation, id: 'loginPasswordLabel', for: 'loginPassword' %>
+    <%= f.password_field :password_confirmation, id: 'loginPassword'%>
     <label id="showPasswordToggle" for="showPasswordCheck">Show
       <input id="showPasswordCheck" type="checkbox" />
       <div class="indicator"></div>
     </label>
   </div>
   <div class="inputGroup inputGroup3">
-    <%= f.button 'Log in', id: 'login' %>
-    <%= link_to "Sign Up", new_user_path, style: 'text-decoration:none;color:#fff', class: 'signup' %>
+    <%= f.button 'Create', id: 'login' %>
   </div>
 <% end %>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js"></script>
 
 <%= javascript_pack_tag 'login' %>
