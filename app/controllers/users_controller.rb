@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: %i[show edit update]
+  before_action :find_user, only: %i[show edit update index]
   def index; end
 
   def new
