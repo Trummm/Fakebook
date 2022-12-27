@@ -7,16 +7,20 @@
         <img src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg" />
       <% end %>
     </div>
-      <%= f.text_field :content, class: 'inp_text', placeholder: 'What do you think ?' %>
+      <%= f.text_field :content, class: 'inp_text',id: 'inp_text_post', placeholder: 'What do you think ?' %>
   </div>
   <div class="button">
-    <div class="label">
+    <div class="label" style="display: flex;align-items: center;">
       <label for="inp_img" class="label"><i class='bx bxs-image-add' ></i></label>
-      <label for="" class="label"><i class='bx bxs-file-gif'></i></label>
-      <label for="" class="label"><i class='bx bx-list-ul'></i></label>
-      <label for="" class="label"><i class='bx bxs-face' ></i></label>
+      <label id="remove" for="" class="label"><i class='bx bx-x' style="font-size:2rem"></i></label>
       <%= f.file_field :image, id: 'inp_img', hidden: true %>
     </div>
-      <button class="btn">POST</button>
+      <button class="btn" id='btn_post' disabled>POST</button>
+  </div>
+  <div style="margin-top:20px">
+    <img id="output" style='width:100%' src=''/>
   </div>
 <% end %>
+
+<%= javascript_pack_tag 'image_preview' %>
+<%= javascript_pack_tag 'disabled_btn' %>

@@ -48,7 +48,11 @@
     <div class="post_top">
         <div style="display:flex;align-items:center">
           <div class="post_top-img">
-            <%= image_tag(post.user.image) %>
+            <% if post.user.image.present? %>
+              <%= image_tag(post.user.image) %>
+            <% else %>
+              <img src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg" />
+            <% end %>
           </div>
           <div class="post_top-name">
             <h3 style="display:flex;align-items:center">
@@ -86,12 +90,18 @@
                 <div class="edit_block_item-<%= post.id %>">
                   <%= form_with model: post, local: true do |f| %>
                     <div style="display: flex;justify-content: center;align-items:center;width: 100%;margin-right:10px">
-                      <%= image_tag(post.user.image, style: 'width:40px;height:40px;border-radius:50%') %>
+                      <% if post.user.image.present? %>
+                        <%= image_tag(post.user.image, style: 'width:40px;height:40px;border-radius:50%') %>
+                      <% else %>
+                        <img src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg", style='width:40px;height:40px;border-radius:50%' />
+                      <% end %>
                       <%= f.text_field :content, style:"width: 80%;height: 50px;padding: 0 10px;background: none;border: none;outline: none;color: #ccc;font-size: 1.6rem;" %>
                     </div>
-                    <div style="display: flex;justify-content: center;margin-top: 20px;">
-                      <%= image_tag(post.image, style: 'width:70%') %>
-                    </div>
+                    <% if post.image.present? %>
+                      <div style="display: flex;justify-content: center;margin-top: 20px;">
+                        <%= image_tag(post.image, style: 'width:70%') %>
+                      </div>
+                    <% end %>
                     <label for="img_more" style="position: absolute;top: 48%;left: 48%;"><i class='bx bx-image-add' style="font-size: 4rem;cursor: pointer;"></i></label>
                     <%= f.file_field :image, hidden: true, style: "width: 80%;border-radius: 10px;", id: 'img_more'%>
                     <div style="width: 100%;display:flex;justify-content:center">
@@ -116,19 +126,21 @@
       <h2><%= post.content %></h2>
     </div>
 
-    <div class="post_image">
-      <%= image_tag(post.image) %>
-    </div>
+    <% if post.image.present? %>
+      <div class="post_image">
+        <%= image_tag(post.image) %>
+      </div>
+    <% end %>
 
     <div class="footer">
-      <label class="cmt">
-          <% if post.comments.present? %>
-            <div class="circle_count"><%= post.comments.count %></div>
-          <% end %>
+      <div class="cmt">
           <%= link_to post_path(post), style: 'text-decoration:none;color:#fff' do %>
             <i class='bx bx-chat' ></i>
           <% end %>
-      </label>
+          <% if post.comments.present? %>
+            <div class="circle_count"><%= post.comments.count %></div>
+          <% end %>
+      </div>
       <div class="share"><i class='bx bx-share' ></i></div>
       <div class="cmt"><i class='bx bx-heart' ></i></div>
     </div>

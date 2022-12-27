@@ -82,7 +82,7 @@
             height: 50px;
             border: none;
             border-radius: 20px;
-            cursor: pointer;
+            cursor: not-allowed;
             font-family: 'Roboto', sans-serif;
             background-color: rgb(29, 155, 240);
             color: #fff;
@@ -165,8 +165,9 @@
           .footer{
             display: flex;
             margin-top: 20px;
+            align-items: flex-start;
             .share{
-              margin: 0 20px;
+              margin: 0 40px;
             }
             i{
               font-size: 1.6rem;
@@ -174,17 +175,17 @@
               cursor: pointer;
             }
             .cmt{
-              position: relative;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
               .circle_count{
-                position: absolute;
                 width: 20px;
                 height: 20px;
                 border-radius: 50%;
-                background-color: red;
                 padding: 2px;
-                font-weight: 900;
-                top: -12px;
-                left: 14px;
+                font-weight: 500;
+                color: #ccc;
                 text-align: center;
               }
             }

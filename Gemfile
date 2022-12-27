@@ -11,6 +11,8 @@ gem 'pg', '~> 1.1'
 
 gem 'pry-rails'
 
+gem 'activestorage-validator'
+
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets

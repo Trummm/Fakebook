@@ -3,7 +3,6 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      # redirect_to request.referrer
       redirect_back(fallback_location: dashboard_path)
     else
       redirect_to :new
