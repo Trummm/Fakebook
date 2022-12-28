@@ -1,8 +1,8 @@
 <div style="display: flex;margin: 20px 0;color:#fff">
-            <div style="display: flex;margin-right: 10px;min-width:170px">
+            <div style="display: flex;margin-right: 16px">
               <div class="middle-cmt_img" style="margin-right: 10px;">
-                <% if @post.user.image.present? %>
-                  <%= image_tag(@post.user.image, style: "width: 40px;height: 40px;border-radius: 50%;" ) %>
+                <% if comment.user.image.present? %>
+                  <%= image_tag(comment.user.image, style: "width: 40px;height: 40px;border-radius: 50%;" ) %>
                 <% else %>
                   <img src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg", style="width: 40px;height: 40px;border-radius: 50%;" />
                 <% end %>
