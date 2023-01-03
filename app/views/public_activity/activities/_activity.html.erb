@@ -1,0 +1,26 @@
+<% if activity.owner.present? %>
+  <li style="display:flex;font-size:1rem;padding:10px 20px">
+    <div>
+      <% if activity.owner.image.present? %>
+        <%= image_tag(activity.owner.image, style: 'width: 56px;height:56px;border-radius:50%') %>
+      <% else %>
+        <%= image_tag 'default.png', style: 'width: 56px; height: 56px;border-radius:50%' %>
+      <% end %>
+    </div>
+    <div style="margin-left: 10px">
+      <div>
+        <% if activity.trackable %>
+          <%= link_to post_path(activity.trackable), style: 'text-decoration:none;color:#fff' do %>
+            <strong><%= activity.owner.name %></strong> add the Post
+          <% end %>
+        <% else %>
+          <strong><%= activity.owner.name %></strong> was remove thanks card
+        <% end %>
+      </div>
+
+      <div style="font-size:0.9rem;margin-top:4px">
+        <i><%= time_ago_in_words(activity.created_at) %> ago</i>
+      </div>
+    </div>
+  </li>
+<% end %>

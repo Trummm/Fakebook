@@ -12,8 +12,22 @@
           Explore
         </li>
         <li>
-          <i class='bx bx-bell' ></i>
-          Notifications
+          <i class='bx bx-bell' style="position:relative"></i>
+          <% if @activities.present? %>
+            <div style="position:absolute;width: 20px;height: 20px;background-color: red;font-size: 0.9rem;display: flex;align-items: center;justify-content: center;border-radius: 50%;top: 222px;left: 20px;"><%= @activities.count %></div>
+          <% end %>
+          <label for="navbar" style="position:relative;outline:none;cursor:pointer;user-select:none">Notifications</label>
+
+          <input type="checkbox" id="navbar" class="nv" hidden/>
+          <ul class="render_notify" style='padding:20px 0'>
+            <div style="padding: 0 20px;margin-bottom: 20px;display:flex;justify-content: space-between;align-items:center">
+              <div>notification</div>
+              <% if @activities.present? %>
+                <%= link_to 'Delete All', destroy_all_notify_posts_path, method: :delete, data: { confirm: 'Are you sure?' }, style: 'color:#fff;font-size:1.2rem' %>
+              <% end %>
+            </div>
+            <%= render @activities %>
+          </ul>
         </li>
         <li>
           <i class='bx bx-message-rounded' ></i>
@@ -28,8 +42,8 @@
           <%= link_to "Profile", user_path(current_user), style: 'text-decoration:none;color:#fff' %>
         </li>
         <li>
-          <i class='bx bx-list-ul' ></i>
-          Lists
+          <i class='bx bx-face'></i>
+          Friends
         </li>
         <li>
           <i class='bx bx-dots-horizontal-rounded' ></i>

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :load_activities, only: %i(index destroy show edit update)
   before_action :find_user, only: %i[show edit update index]
   def index; end
 
@@ -38,5 +39,9 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.find_by(id: params[:id])
+  end
+
+  def load_activities
+    @activities = PublicActivity::Activity.order('created_at DESC').limit(20)
   end
 end

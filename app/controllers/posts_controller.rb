@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :load_activities, only: %i(index destroy show edit update)
   before_action :find_post, only: %i[destroy show edit update]
   def index
     @posts = Post.all.order(created_at: :desc)
@@ -28,6 +29,12 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy_all_notify
+    @activity = PublicActivity::Activity.all
+    @activity.destroy_all
+    redirect_to request.referrer
+  end
+
   def update
     if @post.update(post_params)
       redirect_to @post
@@ -40,5 +47,8 @@ class PostsController < ApplicationController
   end
   def post_params
     params.require(:post).permit(:user_id, :content, :image)
+  end
+  def load_activities
+    @activities = PublicActivity::Activity.order('created_at DESC').limit(20)
   end
 end

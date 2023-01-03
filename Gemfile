@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.0'
 
+gem 'private_pub'
+
 gem 'bcrypt', '3.1.16'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.7'
@@ -13,6 +15,7 @@ gem 'pry-rails'
 
 gem 'activestorage-validator'
 
+gem "public_activity"
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
