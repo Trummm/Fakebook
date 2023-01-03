@@ -1,6 +1,6 @@
 <div class="left">
       <div class="logo">
-        <%= image_tag('logo.png', width: '50px') %>
+        <%= image_tag('logo.png', width: '50px', style: 'object-fit:cover') %>
       </div>
       <ul class="left_list">
         <li>
@@ -42,8 +42,8 @@
           <%= link_to "Profile", user_path(current_user), style: 'text-decoration:none;color:#fff' %>
         </li>
         <li>
-          <i class='bx bx-face'></i>
-          Friends
+          <i class='bx bx-user-circle'></i>
+          <%= link_to "People", users_path, style: 'text-decoration:none;color:#fff' %>
         </li>
         <li>
           <i class='bx bx-dots-horizontal-rounded' ></i>
@@ -54,7 +54,7 @@
       <label for="ip-logout" style="display: flex;align-items: center;top: 130px;position: relative;padding: 10px;cursor:pointer;border-radius:14px">
         <div style="display: flex;align-items: center;">
           <% if current_user.image.present? %>
-            <%= image_tag url_for(current_user.image), style: 'width: 40px;height:40px;border-radius:50%'%>
+            <%= image_tag url_for(current_user.image), style: 'width: 40px;height:40px;border-radius:50%;object-fit:cover'%>
           <% else %>
             <img src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg" width='40px' style='border-radius:50%'/>
           <% end %>

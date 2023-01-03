@@ -1,1 +1,27 @@
-<h1>All User</h1>
+<div class="main">
+  <div class="w1400">
+    <%= render 'shared/navbar' %>
+    
+    <div style="display:flex;flex-direction:column;width: 80%;position: relative;right: -400px;">
+      <div class="friend">
+        <h1>Following:</h1>
+        <% if @following.present? %>
+          <% @following.each do |follower| %>
+            <%= render 'unfollowing', user: follower %>
+          <% end %>
+        <% else %>
+          <div style="max-width: 400px;height: 100px;display: flex;align-items: center;justify-content: center;border: 1px solid #ccc;border-radius: 30px;color: #ccc;">
+            <p>You are not following</p>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="suggest">
+        <h1>Suggest:</h1>
+        <% @follower_suggestions.each do |user| %>
+          <%= render 'following', user: user %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

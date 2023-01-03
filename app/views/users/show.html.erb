@@ -3,18 +3,23 @@
     <%= render 'shared/navbar' %>
 
     <div class="right">
-      <div class="right_center" style="background-image: url(<%= url_for(@user.background) if @user.background.present? %>);background-size:cover;height:245px;position:relative">
+      <div class="right_center" style="background-image: url(<%= url_for(@user.background) if @user.background.present? %>);background-size:cover;height:245px;position:relative;background-position: center;">
         <div class="profile" style="position:absolute;display: flex;bottom: -54%;align-items: center;justify-content: space-between;width: 90%;">
           <div class="profile_left" style="display: flex;flex-direction: column;align-items: flex-start;flex: 6">
             <div class="profile_left-img" style="background-color: black;width: 190px;height: 190px;display: flex;align-items: center;justify-content: center;border-radius: 50%;">
               <% if @user.image.present? %>
-                <%= image_tag url_for(@user.image), style: 'width: 180px;height:180px;border-radius: 50%;' %>
+                <%= image_tag url_for(@user.image), style: 'width: 180px;height:180px;border-radius: 50%;object-fit: cover;' %>
               <% else %>
-                <img src="https://plusvalleyadventure.com/wp-content/uploads/2020/11/default-user-icon-8.jpg" style="width: 180px;height:180px;border-radius: 50%;"/>
+                <img src="https://plusvalleyadventure.com/wp-content/uploads/2020/11/default-user-icon-8.jpg" style="width: 180px;height:180px;border-radius: 50%;object-fit: cover;"/>
               <% end %>
             </div>
-            <div class="profile_left-name" style="margin: 10px 0;font-weight: 900;">
+            <div class="profile_left-name" style="margin: 10px 0;font-weight: 900;display:flex;align-items:center">
               <h3 style="margin: 0;font-weight: 900;font-size:2rem"><%= @user.name %></h3>
+              <div style='display:flex;margin-left:20px;color:#fff;font-weight:700'>
+                <div>Post: <%= @posts.count %></div>
+                <div style="margin: 0 14px">Follower: <%= @user.total_followers %></div>
+                <div>Following: <%= @user.total_following %></div>
+              </div>
             </div>
             <div class="profile_left-nickname">
               <h5 style="margin: 0;color: rgb(47, 51, 54);font-size:1.2rem"><%= @user.nickname %></h5>
@@ -30,7 +35,7 @@
               <div class="mark" style="position:absolute;width:100%;height:100%;background-color: rgba(91, 112, 131, 0.4);display:flex;align-items:center;justify-content:center">
                 <%= form_with model: @user do |f| %>
                   <div class="form_input">
-                    <div class="bg" style="background-image: url(<%= url_for(current_user.background) if @user.background.present? %>)">
+                    <div class="bg" style="background-image: url(<%= url_for(current_user.background) if @user.background.present? %>);background-size:cover;background-position: center;">
                       <label style="cursor: pointer;font-size: 2rem;color: black;" for="background"><i class='bx bx-image-add' ></i></label>
 
                       <label for="img-inp" style="position:absolute;left: 35px;bottom: -82px;cursor: pointer;">
@@ -65,9 +70,15 @@
         </div>
 
         <div class="introduce" style="top: 185%;position: relative;z-index: -999">
-          <p><%= @user.introduce %></p>
+          <p style="font-family:Comic Sans MS;"><i>"<%= @user.introduce %>"</i></p>
         </div>
       </div>
+
+      <div class="show_post" style="margin-top: 240px;position:relative;z-index:-99">
+          <% @posts.each do |post| %>
+            <%= render 'posts/post', post: post %>
+          <% end %>
+        </div>
     </div>
   </div>
 </div>

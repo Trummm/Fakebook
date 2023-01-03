@@ -9,4 +9,12 @@ class User < ApplicationRecord
 
   validates :email, presence: true
   validates :password, presence: true
+
+  def total_followers
+    Follower.where(follower_id: self.id).count
+  end
+
+  def total_following
+    Follower.where(following_id: self.id).count
+  end
 end

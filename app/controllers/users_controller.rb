@@ -1,7 +1,14 @@
 class UsersController < ApplicationController
   before_action :load_activities, only: %i(index destroy show edit update)
   before_action :find_user, only: %i[show edit update index]
-  def index; end
+  def index
+    @users = User.all
+
+    following_ids = Follower.where(follower_id: current_user.id).map(&:following_id)
+    following_ids << current_user.id
+    @follower_suggestions = User.where.not(id: following_ids)
+    @following = User.where(id: following_ids).where.not(id: current_user.id)
+  end
 
   def new
     @user = User.new
@@ -16,7 +23,22 @@ class UsersController < ApplicationController
     end
   end
 
-  def show; end
+  def show 
+    @posts = @user.posts.order(created_at: :desc)
+  end
+
+  def follow_user
+    follower_id = params[:follow_id]
+    if Follower.create!(follower_id: current_user.id, following_id: follower_id)
+      redirect_to request.referrer
+    end
+  end
+
+  def unfollow_user
+    @following_id = Follower.find_by(following_id: params[:following_id])
+    @following_id.destroy
+    redirect_to request.referrer
+  end
 
   def edit; end
   

@@ -2,7 +2,7 @@
   <div class="right_form-img" style="display: flex;align-items: center;background-size: cover;">
     <div class="img_item">
       <% if current_user.image.present? %>
-        <%= image_tag url_for(current_user.image)%>
+        <%= image_tag url_for(current_user.image), style: 'object-fit:cover'%>
       <% else %>
         <img src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg" />
       <% end %>
