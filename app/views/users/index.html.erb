@@ -18,8 +18,14 @@
 
       <div class="suggest">
         <h1>Suggest:</h1>
-        <% @follower_suggestions.each do |user| %>
-          <%= render 'following', user: user %>
+        <% if @follower_suggestions.present? %>
+          <% @follower_suggestions.each do |user| %>
+            <%= render 'following', user: user %>
+          <% end %>
+        <% else %>
+          <div style="max-width: 400px;height: 100px;display: flex;align-items: center;justify-content: center;border: 1px solid #ccc;border-radius: 30px;color: #ccc;">
+            <p>It's Over</p>
+          </div>
         <% end %>
       </div>
     </div>
