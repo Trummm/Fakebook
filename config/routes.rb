@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     collection do 
       delete 'destroy_all_notify'
     end
+
+    resources :likes, only: %i[create destroy]
   end
   resources :comments, only: %i[create destroy edit update]
 

@@ -16,6 +16,8 @@ gem 'pry-rails'
 gem 'activestorage-validator'
 
 gem "public_activity"
+
+gem 'faker'
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets

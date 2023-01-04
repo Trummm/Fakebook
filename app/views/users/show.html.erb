@@ -13,12 +13,32 @@
                 <img src="https://plusvalleyadventure.com/wp-content/uploads/2020/11/default-user-icon-8.jpg" style="width: 180px;height:180px;border-radius: 50%;object-fit: cover;"/>
               <% end %>
             </div>
-            <div class="profile_left-name" style="margin: 10px 0;font-weight: 900;display:flex;align-items:center">
-              <h3 style="margin: 0;font-weight: 900;font-size:2rem"><%= @user.name %></h3>
-              <div style='display:flex;margin-left:20px;color:#fff;font-weight:700'>
-                <div>Post: <%= @posts.count %></div>
-                <div style="margin: 0 14px">Follower: <%= @user.total_followers %></div>
-                <div>Following: <%= @user.total_following %></div>
+            <div class="profile_left-name" style="margin: 10px 0;font-weight: 900;display:flex;align-items:center;width:100%">
+              <div style="flex:1;display: flex;align-items: center;">
+                <h3 style="margin: 0;font-weight: 900;font-size:2rem"><%= @user.name %></h3>
+                <div style='display:flex;margin-left:20px;color:#fff;font-weight:700'>
+                  <div>Post: <%= @posts.count %></div>
+                  <div style="margin: 0 14px">Follower: <%= @user.total_followers %></div>
+                  <div>Following: <%= @user.total_following %></div>
+                </div>
+              </div>
+              <div>
+              <% if !current_user?(@user) %>
+                <% if @check_follow.present? %>
+                    <div style="margin-left: 20px;">
+                      <%= link_to unfollow_user_path(@user), method: :delete, style: 'text-decoration:none;color:#fff' do %>
+                        <button style="cursor: pointer;border: none;width: 100px;height: 30px;border-radius: 10px;color: #fff;background-color: rgb(29, 155, 240);">Unfollow</button>
+                      <% end %>
+                    </div>
+                <% else %>
+                    <div style="margin-left: 20px;">
+                      <%= form_tag follow_user_path, method: :post do %>
+                        <%= hidden_field_tag :follow_id, @user.id %>
+                        <button style="cursor: pointer;border: none;width: 100px;height: 30px;border-radius: 10px;color: #fff;background-color: rgb(29, 155, 240);">Follow</button>
+                      <% end %>
+                    </div>
+                <% end %>
+              <% end %>
               </div>
             </div>
             <div class="profile_left-nickname">

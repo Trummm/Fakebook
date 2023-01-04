@@ -222,6 +222,15 @@
                 text-align: center;
               }
             }
+            .cmt-like{
+              svg{
+                cursor: pointer;
+              }
+              .active{
+                cursor: pointer;
+                fill: red;
+              }
+            }
           }
         }
       }

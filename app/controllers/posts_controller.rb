@@ -2,7 +2,13 @@ class PostsController < ApplicationController
   before_action :load_activities, only: %i(index destroy show edit update)
   before_action :find_post, only: %i[destroy show edit update]
   def index
-    @posts = Post.all.order(created_at: :desc)
+    # @posts = Post.all.order(created_at: :desc)
+    @posts = []
+    follows = Follower.where(follower_id: current_user.id)
+    follows.each do |follow|
+      @posts += Post.where(user_id: follow.following_id).order(created_at: :desc)
+    end
+    @posts += Post.where(user_id: current_user.id).order(created_at: :desc)
     @post = Post.new
   end
   

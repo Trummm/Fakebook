@@ -25,6 +25,7 @@ class UsersController < ApplicationController
 
   def show 
     @posts = @user.posts.order(created_at: :desc)
+    @check_follow = Follower.find_by(following_id: @user.id)
   end
 
   def follow_user

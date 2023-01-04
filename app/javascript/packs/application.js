@@ -4,6 +4,9 @@
 // that code so it'll be compiled.
 //= require social-share-button
 //= require private_pub
+//= require nprogress
+//= require nprogress-turbolinks
+//= require nprogress-ajax
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"

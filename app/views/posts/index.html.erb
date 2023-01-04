@@ -1,3 +1,4 @@
+<%= javascript_pack_tag 'like_ajax' %>
 <div class="main">
   <div class="w1400">
     <%= render 'shared/navbar' %>
@@ -7,7 +8,7 @@
         <%= render 'form' %>
       </div>
  
-      <%= render @posts %>
+      <%= render @posts if @posts %>
     </div>
   </div>
 </div>
