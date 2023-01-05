@@ -16,7 +16,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    @user.skip_validations_create = true 
+    if @user.save && verify_recaptcha(model: @user)
       redirect_to login_path
     else
       render :new
@@ -57,7 +58,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_digest)
+    params.require(:user).permit(:name, :email, :phone, :nickname, :password, :password_digest)
   end
 
   def find_user

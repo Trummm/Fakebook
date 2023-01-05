@@ -1,29 +1,35 @@
-<%= form_with model: @user, class: 'form_login' do |f| %>
+<%= form_with model: @user, class: 'form_login', style: 'width:500px' do |f| %>
   <%= render 'sessions/above' %>
-  
-  <% flash.each do |message_type, message| %>
-    <div class="alert alert-<%= message_type %>"><%= message %></div>
-  <% end %>
 
-  <div class="inputGroup inputGroup1">
-    <%= f.label :name, id: 'loginEmailLabel', for: 'loginEmail' %>
-    <%= f.text_field :name, id: 'loginEmail'%>
-    <%= f.label :email, id: 'loginEmailLabel', for: 'loginEmail' %>
-    <%= f.text_field :email, id: 'loginEmail'%>
-    <p class="helper helper1">email@gmail.com</p>
+  <%= render 'shared/error_message', object: f.object %>
+  <div class="sign_up" style="display:flex">
+    <div class="inputGroup inputGroup1">
+      <%= f.label :name, id: 'loginEmailLabel', for: 'loginEmail' %>
+      <%= f.text_field :name, id: 'loginEmail', placeholder: 'Vinicius Jr'%>
+      <%= f.label :email, id: 'loginEmailLabel', for: 'loginEmail' %>
+      <%= f.text_field :email, id: 'loginEmail', placeholder: 'email@gmail.com'%>
+      <%= f.label :phone, id: 'loginEmailLabel', for: 'loginEmail' %>
+      <%= f.text_field :phone, id: 'loginEmail', placeholder: '079-456-8888'%>
+    </div>
+    <div class="inputGroup inputGroup2">
+      <%= f.label :nickname, id: 'loginEmailLabel', for: 'loginEmail' %>
+      <%= f.text_field :nickname, id: 'loginEmail',value: '@', placeholder: '@example'%>
+      <%= f.label :password, id: 'loginPasswordLabel', for: 'loginPassword' %>
+      <%= f.password_field :password, id: 'loginPassword'%>
+      <%= f.label :password_confirmation, id: 'loginPasswordLabel', for: 'loginPassword' %>
+      <%= f.password_field :password_confirmation, id: 'loginPassword'%>
+      <label id="showPasswordToggle" for="showPasswordCheck">Show
+        <input id="showPasswordCheck" type="checkbox" />
+        <div class="indicator"></div>
+      </label>
+    </div>
   </div>
-  <div class="inputGroup inputGroup2">
-    <%= f.label :password, id: 'loginPasswordLabel', for: 'loginPassword' %>
-    <%= f.password_field :password, id: 'loginPassword'%>
-    <%= f.label :password_confirmation, id: 'loginPasswordLabel', for: 'loginPassword' %>
-    <%= f.password_field :password_confirmation, id: 'loginPassword'%>
-    <label id="showPasswordToggle" for="showPasswordCheck">Show
-      <input id="showPasswordCheck" type="checkbox" />
-      <div class="indicator"></div>
-    </label>
+  <div style="display:flex;justify-content:center;margin:12px 0">
+    <%= recaptcha_tags %>
   </div>
   <div class="inputGroup inputGroup3">
     <%= f.button 'Create', id: 'login' %>
+    <%= link_to "Sign In", login_path, style: 'text-decoration:none;color:#fff', class: 'signup' %>
   </div>
 <% end %>
 

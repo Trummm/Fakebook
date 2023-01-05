@@ -50,6 +50,23 @@
   }
 }
 
+.form_login{
+  max-width: 1200px !important;
+  .sign_up{
+    justify-content: space-around;
+    .inputGroup{
+      > input{
+        width: 540px;
+        margin: 10px 10px;
+        padding: 0 10px !important;
+      }
+      >label{
+       margin: 0 10px; 
+      }
+    }
+  }
+}
+
 @keyframes showForm {
   from{
     opacity: 0;
