@@ -19,21 +19,20 @@ class User < ApplicationRecord
                    length: { maximum: 30 }
 
   validates :nickname, presence: true,
-                       length: { maximum: 6 },
+                       uniqueness: true,
+                       length: { maximum: 12 },
                        format: { with: VALID_NICKNAME_REGEX },
                        unless: :skip_validations_create
 
   validates :email, presence: true,
                     uniqueness: true,
-                    length: { maximum: 100 },
-                    format: { with: VALID_EMAIL_REGEX }
+                    length: { maximum: 100 }
 
   validates :password, presence: true,
                        length: { minimum: PASSWORD_MIN_LENGTH },
                        allow_nil: true
 
   validates :phone, presence: true,
-                    format: { with: VALID_PHONE_REGEX },
                     allow_nil: true
 
   def total_followers

@@ -8,11 +8,13 @@
 require 'faker'
 
 20.times do 
-  User.create(
-    name: Faker::Artist.name,
-    email: Faker::Internet.email,
-    nickname: "@#{Faker::Internet.username}",
+  User.create!(
+    name: Faker::Name.name,
+    email: Faker::Internet.free_email,
+    nickname: "@#{Faker::Name.first_name}",
     password: '123456',
+    phone: Faker::PhoneNumber.phone_number,
+    introduce: Faker::Hacker.say_something_smart,
     isAdmin: false
   )
 end
