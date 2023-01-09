@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     resources :likes, only: %i[create destroy]
   end
   resources :comments, only: %i[create destroy edit update]
+  resources :messages
+  resources :rooms
 
   root to: 'guest_pages#home'
 end

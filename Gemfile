@@ -9,6 +9,8 @@ gem 'bcrypt', '3.1.16'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.7'
 
+gem 'redis', '~> 4.0'
+
 gem "recaptcha", require: "recaptcha/rails"
 
 # Use postgresql as the database for Active Record
