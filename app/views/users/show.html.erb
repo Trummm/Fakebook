@@ -4,7 +4,7 @@
 
     <div class="right">
       <div class="right_center" style="background-image: url(<%= url_for(@user.background) if @user.background.present? %>);background-size:cover;height:245px;position:relative;background-position: center;">
-        <div class="profile" style="position:absolute;display: flex;bottom: -54%;align-items: center;justify-content: space-between;width: 90%;">
+        <div class="profile" style="position:absolute;display: flex;bottom: -90%;align-items: center;justify-content: space-between;width: 90%;">
           <div class="profile_left" style="display: flex;flex-direction: column;align-items: flex-start;flex: 6">
             <div class="profile_left-img" style="background-color: black;width: 190px;height: 190px;display: flex;align-items: center;justify-content: center;border-radius: 50%;">
               <% if @user.image.present? %>
@@ -42,7 +42,7 @@
               </div>
             </div>
             <div class="profile_left-nickname">
-              <h5 style="margin: 0;color: rgb(47, 51, 54);font-size:1.2rem"><%= @user.nickname %></h5>
+              <h5 style="margin: 16px 0;color: rgb(47, 51, 54);font-size:1.2rem"><%= @user.nickname %></h5>
             </div>
           </div>
           <% if current_user?(@user) %>
@@ -89,7 +89,7 @@
         <% end %>
         </div>
 
-        <div class="introduce" style="top: 185%;position: relative;z-index: -999">
+        <div class="introduce" style="top: 222%;position: relative;z-index: -999">
           <p style="font-family:Comic Sans MS;"><i>"<%= @user.introduce %>"</i></p>
         </div>
       </div>
