@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user
   before_action :load_activities, only: %i(index destroy show edit update)
   before_action :find_user, only: %i[show edit update index]
   def index
