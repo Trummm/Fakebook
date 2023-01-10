@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user
+  skip_before_action :verify_authenticity_token
+  before_action :logged_in_user, only: %i[index show follow_user unfollow_user edit update]
   before_action :load_activities, only: %i(index destroy show edit update)
   before_action :find_user, only: %i[show edit update index]
   def index

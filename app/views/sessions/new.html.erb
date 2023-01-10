@@ -1,10 +1,10 @@
-<%= form_with scope: :session, url: login_path, class: 'form_login' do |f| %>
+<%= form_with scope: :session, url: login_path, class: 'form_login', remote: true do |f| %>
   <%= render 'above' %>
   
   <% flash.each do |message_type, message| %>
     <div class="alert alert-<%= message_type %>"><%= message %></div>
   <% end %>
-
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <div class="inputGroup inputGroup1">
     <%= f.label :email, id: 'loginEmailLabel', for: 'loginEmail' %>
     <%= f.text_field :email, id: 'loginEmail'%>
