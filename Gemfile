@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.0'
+ruby '3.0.3'
 
 gem 'private_pub'
 
@@ -12,6 +12,8 @@ gem 'rails', '~> 6.1.7'
 gem 'redis', '~> 4.0'
 
 gem "recaptcha", require: "recaptcha/rails"
+
+gem 'jsbundling-rails'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
