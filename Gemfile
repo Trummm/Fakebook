@@ -79,3 +79,13 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "shadcn-ui", "~> 0.0.5"
 
 gem "tailwindcss-rails", "~> 2.0"
+
+gem "shakapacker", "= 7.1"
+
+gem "importmap-rails", "~> 1.2"
+
+gem "jquery-rails"
+
+gem "bootstrap"
+
+gem "sassc-rails"
