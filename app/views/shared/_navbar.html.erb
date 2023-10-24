@@ -1,6 +1,6 @@
 <div class="left">
       <div class="logo">
-        <%= image_tag('logo.png', width: '50px', style: 'object-fit:cover') %>
+        <%= image_tag('logo.svg', width: '100px', style: 'object-fit:cover') %>
       </div>
       <ul class="left_list">
         <li>
@@ -14,7 +14,7 @@
         <li>
           <i class='bx bx-bell' style="position:relative"></i>
           <% if @activities.present? %>
-            <div style="position:absolute;width: 20px;height: 20px;background-color: red;font-size: 0.9rem;display: flex;align-items: center;justify-content: center;border-radius: 50%;top: 205px;left: 20px;"><%= @activities.count %></div>
+            <div style="position:absolute;width: 20px;height: 20px;background-color: red;font-size: 0.9rem;display: flex;align-items: center;justify-content: center;border-radius: 50%;top: 230px;left: 20px;"><%= @activities.count %></div>
           <% end %>
           <label for="navbar" style="position:relative;outline:none;cursor:pointer;user-select:none">Notifications</label>
 
@@ -57,7 +57,9 @@
         </div>
         <div style="margin-left: 10px;">
           <p style="margin: 0"><%= current_user.name %></p>
-          <p style="margin: 0"><%= current_user.nickname %></p>
+          <% if current_user.nickname.present? %>
+            <p style="margin: 0"><%= current_user.nickname %></p>
+          <% end %>
         </div>
       </label>
 
