@@ -46,7 +46,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to @post
     end
-  end
+  end 
 
   private
   def find_post
